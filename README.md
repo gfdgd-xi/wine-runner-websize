@@ -1,5 +1,5 @@
 <p width=100px align="center"><img src="https://storage.deepin.org/thread/202208031419283599_deepin-wine-runner.png"></p>
-<h1 align="center">Wine 运行器 3.1.0</h1>
+<h1 align="center">Wine 运行器 3.2.0</h1>
 <hr>
 
 ## 介绍
@@ -65,14 +65,14 @@ env WINEPREFIX=容器路径 wine（wine的路径） 可执行文件路径
 ### main 分支
 主分支，稳定分支
 
-## 版本区分
+## 版本区分（从 3.1.0 版本开始不再区分）
 ### 无特殊标识
 普通版本（一般来自 Gitee、Github、Gitlink 等渠道）  
 ### 版本号带`-spark`
 星火应用商店版本  
 ### 版本号带`-uos`
 深度应用商店版本，一般带免开开发者模式签名  
-### 包名带`-52`
+### 包名带`-52`（已停止支持）
 吾爱论坛专版，只在吾爱论坛发布，功能会阉割（如更新、评分、bug反馈功能等等），一般建议使用上面的三个版本  
 ![image.png](https://storage.deepin.org/thread/202209251259142818_image.png)  
 （没人喜欢看到这个无法连接服务器吧）    
@@ -119,6 +119,28 @@ desktop文件中StartupWMClass字段。用于让桌面组件将窗口类名与de
 ![image.png](https://storage.deepin.org/thread/202207190822204627_image.png)
 
 ## 更新日志 
+### 3.2.0（2023年03月19日）
+**※1、Windows 应用适配工具新增系统资源显示；**  
+**※2、Windows 应用适配工具使用 C++ 重写；**  
+**※3、修复打包器（基于官方生态适配脚本）无法打开的问题；**  
+**※4、新增运行库功能安装，以实现使用 Qemu User 跨架构运行 Wine 的功能（理论上支持 3a4000 了，但没试过）；**  
+**※5、修复 Chroot 容器的一些问题；**  
+**※6、修复在 Debian11 安装时缺失依赖 rar 的问题；**  
+**※7、新增安装 box86、box64 的功能；**  
+**※8、修复故障反馈功能错误的问题；**  
+**※9、支持调用 Flatpak 安装的 Wine；**  
+10、修改程序内的部分网址；  
+11、作者信息变更；  
+12、支持禁用程序的多语言支持（默认禁用，因为是机翻的）；  
+13、支持在程序本地翻译缺失的情况下自动机翻缺失语句；  
+14、从此版本开始不再区分吾爱版、Spark 版和 UOS 版；  
+15、新增下载量查询；  
+16、更新程序公告；  
+17、新增断网彩蛋。  
+
+![图片.png](https://storage.deepin.org/thread/202303191608011688_图片.png)
+
+
 ### 3.1.0（2023年01月06日）
 **※1、不基于生态适配脚本打包器支持禁用 Mono/Gecko 打包器；**  
 **※2、自动容器配置脚本新增命令 decompressionbottle、programforum、installmsi 以及上述命令的帮助；**  
@@ -527,6 +549,18 @@ Gitlink：https://www.gitlink.org.cn/gfdgd_xi/deep-wine-runner
 开发不易，原创艰难，给一个 Star 吧，你的 Star 是我继续开发的动力  
 ![star](https://gitee.com/gfdgd-xi/deep-wine-runner/badge/star.svg?theme=dark)  
 
+## 运行库下载
+| 架构 | 运行库下载 |
+|-|-|
+| i386 | https://code.gitlink.org.cn/gfdgd_xi/runtime-for-qemu/raw/branch/master/i386-runtime-for-qemu_1.0.0_all.deb |
+| amd64 | https://code.gitlink.org.cn/gfdgd_xi/runtime-for-qemu/raw/branch/master/amd64-runtime-for-qemu_1.0.0_all.deb |
+| armhf | https://code.gitlink.org.cn/gfdgd_xi/runtime-for-qemu/raw/branch/master/armhf-runtime-for-qemu_1.0.0_all.deb |
+| arm64 | https://code.gitlink.org.cn/gfdgd_xi/runtime-for-qemu/raw/branch/master/arm64-runtime-for-qemu_1.0.0_all.deb |
+| mips64el | https://code.gitlink.org.cn/gfdgd_xi/runtime-for-qemu/raw/branch/master/mips64el-runtime-for-qemu_1.0.0_all.deb |
+| ppc64el | https://code.gitlink.org.cn/gfdgd_xi/runtime-for-qemu/raw/branch/master/ppc64el-runtime-for-qemu_1.0.0_all.deb |
+| riscv64 | https://code.gitlink.org.cn/gfdgd_xi/runtime-for-qemu/raw/branch/master/riscv64-runtime-for-qemu_1.0.0_all.deb |
+| s390x | https://code.gitlink.org.cn/gfdgd_xi/runtime-for-qemu/raw/branch/master/s390x-runtime-for-qemu_1.0.0_all.deb |
+
 ## 附：用于编译 Wine 的 Docker 容器（Debian10）
 内安装了编译 Wine 所需要的依赖，Wine 编译教程：https://wiki.winehq.org/Building_Wine  
 当然也可以到 http://wine.wine-runner.racoongx.cn/ 或 Wine 运行器内下载已经编译好的 Wine  
@@ -545,7 +579,7 @@ sudo docker run -it wine /bin/bash
 cd /root
 ## 先编译 amd64 版本的 Wine
 # 安装依赖库（amd64 和 i386 的相互冲突）
-sudo apt install libpcsclite-dev libsdl2-dev:i386 samba-dev -y
+sudo apt install libpcsclite-dev libsdl2-dev samba-dev -y
 # 下载源码
 wget https://dl.winehq.org/wine/source/8.x/wine-8.3.tar.xz
 tar -xf wine-8.3.tar.xz
@@ -583,4 +617,4 @@ make install -j4
 
 ```
 
-# ©2020-Now
+# ©2020-Now gfdgd xi、为什么您不喜欢熊出没和阿布呢
