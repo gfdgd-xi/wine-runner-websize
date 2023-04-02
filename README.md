@@ -27,7 +27,7 @@
 		runModeIsProd:  true ,
 		customEmojis: {"codeberg":":codeberg:","git":":git:","gitea":":gitea:","github":":github:","gitlab":":gitlab:","gogs":":gogs:"},
 		useServiceWorker:  false ,
-		csrfToken: 'V3mYzI_sMk_rFarES07N07YYjEk6MTY4MDMyMTYyODU0MjE1MTU3NQ',
+		csrfToken: '2a80waZwBSC2sF97y-ubGsOaaqg6MTY4MDQwODAyODU4NDYyNTYwMA',
 		pageData: {},
 		requireTribute:  null ,
 		notificationSettings: {"EventSourceUpdateTime":10000,"MaxTimeout":60000,"MinTimeout":10000,"TimeoutStep":10000}, 
@@ -147,7 +147,7 @@
 		</h4>
 		<div class="ui attached segment">
 			<form class="ui form" action="/user/login" method="post">
-			<input type="hidden" name="_csrf" value="V3mYzI_sMk_rFarES07N07YYjEk6MTY4MDMyMTYyODU0MjE1MTU3NQ">
+			<input type="hidden" name="_csrf" value="2a80waZwBSC2sF97y-ubGsOaaqg6MTY4MDQwODAyODU4NDYyNTYwMA">
 			<div class="required inline field ">
 				<label for="user_name">Username or Email Address</label>
 				<input id="user_name" type="text" name="user_name" value="" autofocus required>
@@ -206,7 +206,7 @@
 				
 			
 			
-				Page: <strong>1ms</strong>
+				Page: <strong>2ms</strong>
 				Template: <strong>0ms</strong>
 			
 		</div>
