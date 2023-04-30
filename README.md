@@ -1,5 +1,5 @@
 <p width=100px align="center"><img src="https://storage.deepin.org/thread/202208031419283599_deepin-wine-runner.png"></p>
-<h1 align="center">Wine 运行器 3.2.0</h1>
+<h1 align="center">Wine 运行器 3.2.1</h1>
 <hr>
 
 ## 介绍
@@ -48,7 +48,7 @@ env WINEPREFIX=容器路径 wine（wine的路径） 可执行文件路径
 1. 用 Wine 运行 EXE
 2. 支持下载/安装 Wine
 3. 支持下载定制好的 Chroot 容器并使用 Qemu 调用运行
-4. 支持**半自动**安装 Windows 7 镜像至 VirtualBox（只限 x86_64）
+4. 支持**半自动**安装 Windows 7 镜像至 VirtualBox/Qemu
 5. 支持打包 Wine 应用（简易打包器/基于生态适配脚本的打包器/高级打包器）
 6. 检测容器缺失 DLL 并下载
 7. 支持在线/本地拉取 Wine 容器配置方案并部署（初步应用商店）
@@ -60,6 +60,17 @@ env WINEPREFIX=容器路径 wine（wine的路径） 可执行文件路径
 13. 支持自定义生成 .desktop 到桌面和启动器
 14. 支持下载适配常用字体
 15. 支持终止指定容器运行的所有程序
+
+## 上架到的应用商店
+> 可以从下列应用商店获取 Wine 运行器
+### Deepin/UOS 应用商店
+![图片.png](https://storage.deepin.org/thread/202304192211278050_图片.png)  
+
+### 星火应用商店
+![图片.png](https://storage.deepin.org/thread/202304192212308212_图片.png)  
+
+### 龙芯应用合作社
+（找时间再补图）
 
 ## 分支介绍
 ### main 分支
@@ -119,6 +130,22 @@ desktop文件中StartupWMClass字段。用于让桌面组件将窗口类名与de
 ![image.png](https://storage.deepin.org/thread/202207190822204627_image.png)
 
 ## 更新日志 
+### 3.2.1（2023年04月29日）
+**※1、Windows 虚拟机安装工具支持非 X86 架构；**  
+**※2、应用打包器可以与星火应用商店配合构建 arm/all 全架构的 Wine 包；**  
+**※3、Windows 虚拟机安装工具支持调用 Qemu；**  
+**※4、新增 Qemu User 运行 Wine 的帮助入口；**  
+**※5、修复 Windows 虚拟机的自动配置镜像缺少 aria2c.exe 的故障；**  
+**※6、支持在更新程序版本时自动关闭程序进程；**  
+7、运行器和打包器支持调用 spark-wine8；  
+8、修改作者信息；  
+9、新增安装包构建时间；  
+10、优化 Wine 运行器更新策略。  
+
+![图片.png](https://storage.deepin.org/thread/20230429210452509_图片.png)
+
+
+
 ### 3.2.0（2023年03月19日）
 **※1、Windows 应用适配工具新增系统资源显示；**  
 **※2、Windows 应用适配工具使用 C++ 重写；**  
@@ -563,7 +590,8 @@ Gitlink：https://www.gitlink.org.cn/gfdgd_xi/deep-wine-runner
 
 ## 附：用于编译 Wine 的 Docker 容器（Debian10）
 内安装了编译 Wine 所需要的依赖，Wine 编译教程：https://wiki.winehq.org/Building_Wine  
-当然也可以到 http://wine.wine-runner.racoongx.cn/ 或 Wine 运行器内下载已经编译好的 Wine  
+当然也可以到 http://wine.wine-runner.gfdgdxi.top/ 或 Wine 运行器内下载已经编译好的 Wine  
+（屏蔽微信在Wine中运行时产生的水印/黑块？可以参考：https://12101111.github.io/block-wine-wechat-black-window/ 和 https://blog.csdn.net/ericden/article/details/122118443 ）
 ### 拉取
 ***（需要先安装 Docker 后再输入以下命令）***  
 ```bash
@@ -617,4 +645,4 @@ make install -j4
 
 ```
 
-# ©2020-Now gfdgd xi、为什么您不喜欢熊出没和阿布呢
+# ©2020-Now gfdgd xi
